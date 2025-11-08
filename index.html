@@ -33,7 +33,42 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
-  </style>
+  </style>.art-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.art-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.price {
+  font-weight: bold;
+  color: #444;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+.buy-button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #444;
+}
 </head>
 <body>
   <header>
@@ -54,6 +89,21 @@
 </body><section id="gallery">
   <h2>My Art Gallery</h2>
   <div class="gallery">
+  <div class="art-item">
+    <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg" alt="Art 1">
+    <p class="price">$150</p>
+    <button class="buy-button">Buy Now</button>
+  </div>
+
+  <!-- Add more artworks below using the same format -->
+  <!-- Example:
+  <div class="art-item">
+    <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/painting2.jpg" alt="Art 2">
+    <p class="price">$120</p>
+    <button class="buy-button">Buy Now</button>
+  </div>
+  -->
+</div>
     <!-- Replace the src filenames below with your uploaded art image names -->
     <img src=https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg
   </div>
