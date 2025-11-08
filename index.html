@@ -24,38 +24,26 @@
       text-align: center;
       padding: 25px 15px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      position: relative;
     }
 
     header h1 {
-      font-size: 26px;
+      font-size: 28px;
       margin: 0;
-      font-weight: 600;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header h1 span {
+      color: #25d366;
     }
 
     header p {
       font-size: 15px;
       color: #bbb;
       margin-top: 5px;
-    }
-
-    /* Cart Icon */
-    .cart {
-      position: absolute;
-      right: 25px;
-      top: 25px;
-      background: #25d366;
-      padding: 10px 14px;
-      border-radius: 50px;
-      color: white;
-      font-size: 20px;
-      text-decoration: none;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-      transition: background 0.3s;
-    }
-
-    .cart:hover {
-      background: #1ebe5d;
     }
 
     .gallery {
@@ -74,6 +62,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeIn 1s ease;
     }
 
     .art-card:hover {
@@ -91,6 +80,11 @@
 
     .art-card:hover img {
       transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .art-info {
@@ -117,32 +111,29 @@
       gap: 10px;
     }
 
-    .buy-btn {
-      background: #25d366;
-      color: white;
+    .buy-btn, .email-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       text-decoration: none;
+      color: white;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 500;
-      transition: background 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
 
-    .buy-btn:hover {
-      background: #1ebe5d;
+    .buy-btn {
+      background: #25d366;
     }
 
     .email-btn {
       background: #0078d7;
-      color: white;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background 0.3s;
     }
 
-    .email-btn:hover {
-      background: #0062b1;
+    .buy-btn:hover, .email-btn:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
     }
 
     .about {
@@ -168,7 +159,7 @@
       background-color: #000;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-size: 14px;
       margin-top: 40px;
     }
@@ -180,6 +171,15 @@
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    footer .socials {
+      margin-top: 10px;
+    }
+
+    footer .socials a {
+      margin: 0 8px;
+      font-size: 18px;
     }
   </style>
 
@@ -196,15 +196,21 @@
         alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
       }
     });
+
+    // Disable drag saving on images
+    window.onload = () => {
+      document.querySelectorAll("img").forEach(img => {
+        img.addEventListener("dragstart", e => e.preventDefault());
+        img.addEventListener("mousedown", e => e.preventDefault());
+      });
+    };
   </script>
 </head>
-
 <body>
 
   <header>
-    <h1>Shahiem Abraham Art Store</h1>
+    <h1><span>🛒</span> Shahiem Abraham Art Store</h1>
     <p>Exclusive Art Collection for Sale</p>
-    <a href="#" class="cart">🛒</a>
   </header>
 
   <section class="gallery">
@@ -214,8 +220,8 @@
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
         <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20RUST%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20RUST%20BOY%20artwork.%0A">Email</a>
+          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">🛒 WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20RUST%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20RUST%20BOY%20artwork.%0A">📧 Email</a>
         </div>
       </div>
     </div>
@@ -226,8 +232,8 @@
         <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
         <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20LV%20Rust%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20LV%20Rust%20BOY%20artwork.%0A">Email</a>
+          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">🛒 WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20LV%20Rust%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20LV%20Rust%20BOY%20artwork.%0A">📧 Email</a>
         </div>
       </div>
     </div>
@@ -238,8 +244,8 @@
         <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
         <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20Louis%20Vuitton%20Boy%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20Louis%20Vuitton%20Boy%20artwork.%0A">Email</a>
+          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">🛒 WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20Louis%20Vuitton%20Boy%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20Louis%20Vuitton%20Boy%20artwork.%0A">📧 Email</a>
         </div>
       </div>
     </div>
@@ -253,6 +259,11 @@
 
   <footer>
     <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
+    <div class="socials">
+      <a href="https://wa.me/27639193571">WhatsApp</a> |
+      <a href="mailto:abrahamshahiem1@gmail.com">Email</a> |
+      <a href="#">Instagram (coming soon)</a>
+    </div>
   </footer>
 
 </body>
