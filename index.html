@@ -104,7 +104,6 @@
       margin: 8px 0;
     }
 
-    /* Purchase Options */
     .buy-options {
       display: flex;
       justify-content: center;
@@ -191,23 +190,20 @@
     });
 
     document.addEventListener('keydown', function(event) {
-      if (event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'S' || event.key === 'U')) {
+      if (event.ctrlKey && (event.key === 's' || event.key === 'S' || event.key === 'u' || event.key === 'U' || event.key === 'p' || event.key === 'P')) {
         event.preventDefault();
         alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
       }
     });
 
-    // Disable drag saving on images
-    window.onload = () => {
-      document.querySelectorAll("img").forEach(img => {
-        img.addEventListener("dragstart", e => e.preventDefault());
-        img.addEventListener("mousedown", e => e.preventDefault());
-      });
-    };
+    document.addEventListener('dragstart', event => {
+      event.preventDefault();
+      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
+    });
   </script>
 </head>
-<body>
 
+<body>
   <header>
     <h1><span>🛒</span> Shahiem Abraham Art Store</h1>
     <p>Exclusive Art Collection for Sale</p>
