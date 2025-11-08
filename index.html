@@ -75,12 +75,16 @@
 
     .watermark {
       position: absolute;
-      bottom: 8px;
-      right: 10px;
-      color: rgba(255,255,255,0.6);
-      font-size: 11px;
-      font-weight: 500;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(255,255,255,0.25);
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       pointer-events: none;
+      text-shadow: 0 0 4px rgba(0,0,0,0.6);
     }
 
     .art-info {
@@ -101,22 +105,19 @@
     }
 
     .buy-btn {
-      display: inline-block;
-      background: #25d366;
+      background: #111;
       color: white;
       text-decoration: none;
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 8px;
       font-weight: 500;
       transition: background 0.3s;
+      cursor: pointer;
+      border: none;
     }
 
     .buy-btn:hover {
-      background: #1ebe5d;
-    }
-
-    .buy-btn::before {
-      content: "🛒 ";
+      background: #333;
     }
 
     .about {
@@ -155,6 +156,65 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Popup Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #000;
+    }
+
+    .popup-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .popup-btn {
+      background: #25d366;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .popup-btn.email {
+      background: #0078d7;
+    }
+
+    .popup-btn:hover {
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
   </style>
 
   <script>
@@ -164,11 +224,23 @@
     });
 
     document.addEventListener('keydown', function(event) {
-      if (event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'S' || event.key === 'U')) {
+      if (event.ctrlKey && (event.key === 's' || event.key === 'u')) {
         event.preventDefault();
         alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
       }
     });
+
+    function openPopup(title, whatsappMsg, emailSubject) {
+      const popup = document.querySelector('.popup-overlay');
+      popup.style.display = 'flex';
+      document.getElementById('popup-title').innerText = title;
+      document.getElementById('whatsapp-link').href = `https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20${whatsappMsg}%20artwork.`;
+      document.getElementById('email-link').href = `mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20${emailSubject}%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20${emailSubject}%20artwork.%0A`;
+    }
+
+    function closePopup() {
+      document.querySelector('.popup-overlay').style.display = 'none';
+    }
   </script>
 </head>
 <body>
@@ -185,7 +257,7 @@
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
-        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">Buy Now</a>
+        <button class="buy-btn" onclick="openPopup('RUST BOY','RUST BOY','RUST BOY')">Buy Artwork</button>
       </div>
     </div>
 
@@ -195,7 +267,7 @@
       <div class="art-info">
         <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
-        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">Buy Now</a>
+        <button class="buy-btn" onclick="openPopup('LV Rust BOY','LV Rust BOY','LV Rust BOY')">Buy Artwork</button>
       </div>
     </div>
 
@@ -205,15 +277,27 @@
       <div class="art-info">
         <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
-        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">Buy Now</a>
+        <button class="buy-btn" onclick="openPopup('Louis Vuitton Boy','Louis Vuitton Boy','Louis Vuitton Boy')">Buy Artwork</button>
       </div>
     </div>
   </section>
 
+  <div class="popup-overlay" onclick="closePopup()">
+    <div class="popup" onclick="event.stopPropagation()">
+      <h3 id="popup-title">Buy Artwork</h3>
+      <div class="popup-buttons">
+        <a id="whatsapp-link" class="popup-btn" href="#">WhatsApp</a>
+        <a id="email-link" class="popup-btn email" href="#">Email</a>
+      </div>
+      <br>
+      <button class="buy-btn" style="background:#555;" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
   <section class="about">
     <h2>About the Artist</h2>
     <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
-    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a>.</p>
+    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a> or email me at <a href="mailto:abrahamshahiem1@gmail.com">abrahamshahiem1@gmail.com</a>.</p>
   </section>
 
   <footer>
@@ -221,4 +305,4 @@
   </footer>
 
 </body>
-  </html>
+</html>
