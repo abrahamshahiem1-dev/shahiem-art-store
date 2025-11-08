@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><style>
+.art-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.art-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.price {
+  font-weight: bold;
+  color: #444;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+.buy-button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #444;
+}
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shahiem Abraham Art Store</title>
