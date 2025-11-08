@@ -41,34 +41,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shahiem Abraham Art Store</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
-      margin: 0;
-      text-align: center;
-    }
-    header {
-      background-color: #000;
-      color: white;
-      padding: 2rem 1rem;
-    }
-    h1 {
-      margin: 0;
-    }
-    .gallery img {
-      width: 90%;
-      max-width: 300px;
-      margin: 10px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    footer {
-      background: #222;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
+  <style><style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background-color: #000;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .art-item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.2s ease;
+  }
+
+  .art-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .art-item img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .price {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #444;
+    margin: 10px 0;
+  }
+
+  .buy-button {
+    display: inline-block;
+    background-color: #000;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .buy-button:hover {
+    background-color: #444;
+  }
+
+  footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 40px;
+  }
+  </style>
+    
     }
   </style>.
 }
