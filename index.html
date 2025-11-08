@@ -1,169 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shahiem Abraham Art Store</title>
   <style>
-    /* --- Page layout --- */
-    body{
-      font-family: "Poppins", Arial, sans-serif;
-      margin:0;
-      background:#f7f7f7;
-      color:#222;
-      -webkit-user-select:none;
-      -ms-user-select:none;
-      user-select:none;
-    }
-    header{
-      background:#000;
-      color:#fff;
-      text-align:center;
-      padding:26px 16px;
-      box-shadow:0 2px 6px rgba(0,0,0,.18);
-    }
-    header h1{font-size:26px;margin:0;font-weight:600}
-    header p{color:#bdbdbd;margin:6px 0 0}
-
-    /* --- Gallery grid --- */
-    .gallery{
-      max-width:1200px;
-      margin:36px auto;
-      padding:0 18px 40px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:26px;
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #222;
+      overflow-x: hidden;
+      touch-action: pan-y;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
-    /* --- Card --- */
-    .art-card{
-      position:relative;            /* needed for the watermark absolute positioning */
-      background:#fff;
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-      transition:transform .28s, box-shadow .28s;
-    }
-    .art-card:hover{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,.12); }
-
-    /* --- Image: ensure it's below watermark --- */
-    .art-card img{
-      display:block;
-      width:100%;
-      height:380px;
-      object-fit:cover;
-      transition:transform .45s ease;
-      z-index:1;                   /* keep image behind watermark */
-      position:relative;
-      pointer-events:none;         /* disallow dragging/clicks on the image itself */
-    }
-    .art-card:hover img{ transform:scale(1.04); }
-
-    /* --- Watermark (fixed over the bottom-right corner of the image) --- */
-    .art-card .watermark{
-      position:absolute;
-      z-index:5;                   /* above the image */
-      bottom:12px;                 /* distance from bottom of card */
-      right:12px;                  /* distance from right edge of card */
-      background: rgba(0,0,0,0.28);/* small dark blur background for readability */
-      color: rgba(255,255,255,0.92);
-      font-size:11px;
-      font-weight:500;
-      padding:4px 7px;
-      border-radius:6px;
-      letter-spacing:0.2px;
-      pointer-events:none;         /* can't be clicked or dragged */
-      text-shadow: 0 1px 2px rgba(0,0,0,.35);
-      backdrop-filter: blur(2px);
-      opacity:0.95;
+    header {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    /* --- Card content --- */
-    .art-info{ padding:16px; text-align:center; z-index:6 }
-    .art-title{ font-size:20px; font-weight:600; color:#111; margin-bottom:6px }
-    .art-price{ color:#27ae60; font-size:18px; margin-bottom:10px; font-weight:600 }
-    .buy-btn{
-      display:inline-block;
-      background:#25d366;
-      color:#fff;
-      padding:10px 18px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      transition:background .22s;
+    header h1 {
+      font-size: 26px;
+      margin: 0;
+      font-weight: 600;
     }
-    .buy-btn:hover{ background:#1ebe5d }
 
-    /* --- About / Footer --- */
-    .about{ max-width:920px; margin:40px auto; text-align:center; padding:0 16px; color:#444 }
-    .about h2{ font-size:22px; margin-bottom:8px }
-    footer{ background:#000; color:#fff; text-align:center; padding:20px; margin-top:40px; font-size:14px }
-    footer a{ color:#25d366; text-decoration:none }
+    header p {
+      font-size: 15px;
+      color: #bbb;
+      margin-top: 5px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .art-card {
+      position: relative;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .art-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    .art-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Watermark text */
+    .watermark {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      font-weight: 500;
+      pointer-events: none;
+    }
+
+    .art-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .art-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .art-price {
+      color: #27ae60;
+      font-size: 18px;
+      margin: 8px 0;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .buy-btn:hover {
+      background: #1ebe5d;
+    }
+
+    .buy-btn::before {
+      content: "🛒 ";
+    }
+
+    .about {
+      max-width: 900px;
+      margin: 60px auto;
+      text-align: center;
+      padding: 0 20px;
+      color: #444;
+    }
+
+    .about h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .about p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #25d366;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
-
   <script>
-    // Light protection: block right click and some copy keys.
-    document.addEventListener('contextmenu', e => {
-      e.preventDefault();
+    // Block right-click and common copy keys
+    document.addEventListener('contextmenu', event => {
+      event.preventDefault();
       alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
     });
-    document.addEventListener('keydown', e => {
-      // block Ctrl+S / Ctrl+U / Ctrl+Shift+I (basic deterrent)
-      if ((e.ctrlKey && (e.key==='s' || e.key==='S' || e.key==='u' || e.key==='U')) || (e.ctrlKey && e.shiftKey && e.key==='I')) {
-        e.preventDefault();
+
+    document.addEventListener('keydown', function(event) {
+      if (event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'S' || event.key === 'U')) {
+        event.preventDefault();
         alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
       }
     });
   </script>
 </head>
 <body>
+
   <header>
     <h1>Shahiem Abraham Art Store</h1>
     <p>Exclusive Art Collection for Sale</p>
   </header>
 
   <section class="gallery">
-    <!-- Card 1 -->
     <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg" alt="RUST BOY">
+      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg" alt="Rust Boy">
       <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
-        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY.">Buy Now</a>
+        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">Buy Now</a>
       </div>
     </div>
 
-    <!-- Card 2 -->
     <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1).jpg" alt="LV Rust BOY">
+      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1).jpg" alt="LV Rust Boy">
       <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
-        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY.">Buy Now</a>
+        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">Buy Now</a>
       </div>
     </div>
 
-    <!-- Card 3 -->
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e.jpg" alt="Louis Vuitton Boy">
       <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
-        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy.">Buy Now</a>
+        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">Buy Now</a>
       </div>
     </div>
   </section>
 
   <section class="about">
     <h2>About the Artist</h2>
-    <p>Hi — I’m <strong>Shahiem Abraham</strong>. Every piece here is original and for sale. For commissions or direct purchases use the WhatsApp Buy button.</p>
+    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
+    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a>.</p>
   </section>
 
   <footer>
     <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
   </footer>
+
 </body>
 </html>
