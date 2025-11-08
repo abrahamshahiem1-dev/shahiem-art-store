@@ -13,6 +13,9 @@
       color: #222;
       overflow-x: hidden;
       touch-action: pan-y;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     header {
@@ -45,6 +48,7 @@
     }
 
     .art-card {
+      position: relative;
       background: white;
       border-radius: 14px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -62,10 +66,22 @@
       height: 380px;
       object-fit: cover;
       transition: transform 0.4s ease;
+      pointer-events: none;
     }
 
     .art-card:hover img {
       transform: scale(1.05);
+    }
+
+    /* Watermark text */
+    .watermark {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      font-weight: 500;
+      pointer-events: none;
     }
 
     .art-info {
@@ -140,8 +156,21 @@
     footer a:hover {
       text-decoration: underline;
     }
-
   </style>
+  <script>
+    // Block right-click and common copy keys
+    document.addEventListener('contextmenu', event => {
+      event.preventDefault();
+      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'S' || event.key === 'U')) {
+        event.preventDefault();
+        alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
+      }
+    });
+  </script>
 </head>
 <body>
 
@@ -153,6 +182,7 @@
   <section class="gallery">
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg" alt="Rust Boy">
+      <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
@@ -162,6 +192,7 @@
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1).jpg" alt="LV Rust Boy">
+      <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
@@ -171,6 +202,7 @@
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e.jpg" alt="Louis Vuitton Boy">
+      <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
