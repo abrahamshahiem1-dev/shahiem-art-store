@@ -73,20 +73,6 @@
       transform: scale(1.05);
     }
 
-    .watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: rgba(255,255,255,0.25);
-      font-size: 18px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      pointer-events: none;
-      text-shadow: 0 0 4px rgba(0,0,0,0.6);
-    }
-
     .art-info {
       padding: 15px;
       text-align: center;
@@ -114,10 +100,18 @@
       transition: background 0.3s;
       cursor: pointer;
       border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
     }
 
     .buy-btn:hover {
       background: #333;
+    }
+
+    .buy-btn span {
+      font-size: 18px;
     }
 
     .about {
@@ -253,31 +247,34 @@
   <section class="gallery">
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6%20(1).jpg" alt="Rust Boy">
-      <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
-        <button class="buy-btn" onclick="openPopup('RUST BOY','RUST BOY','RUST BOY')">Buy Artwork</button>
+        <button class="buy-btn" onclick="openPopup('RUST BOY','RUST BOY','RUST BOY')">
+          <span>🛒</span> Buy Artwork
+        </button>
       </div>
     </div>
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1)%20(1).jpg" alt="LV Rust Boy">
-      <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
-        <button class="buy-btn" onclick="openPopup('LV Rust BOY','LV Rust BOY','LV Rust BOY')">Buy Artwork</button>
+        <button class="buy-btn" onclick="openPopup('LV Rust BOY','LV Rust BOY','LV Rust BOY')">
+          <span>🛒</span> Buy Artwork
+        </button>
       </div>
     </div>
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e%20(2).jpg" alt="Louis Vuitton Boy">
-      <div class="watermark">© Shahiem Abraham</div>
       <div class="art-info">
         <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
-        <button class="buy-btn" onclick="openPopup('Louis Vuitton Boy','Louis Vuitton Boy','Louis Vuitton Boy')">Buy Artwork</button>
+        <button class="buy-btn" onclick="openPopup('Louis Vuitton Boy','Louis Vuitton Boy','Louis Vuitton Boy')">
+          <span>🛒</span> Buy Artwork
+        </button>
       </div>
     </div>
   </section>
