@@ -9,89 +9,145 @@
       font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f3f3f3;
+      background-color: #f7f7f7;
       color: #222;
+      overflow-x: hidden;
+      touch-action: pan-y;
     }
+
     header {
       background-color: #000;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
+
     header h1 {
       font-size: 26px;
       margin: 0;
+      font-weight: 600;
     }
+
     header p {
-      font-size: 16px;
+      font-size: 15px;
+      color: #bbb;
       margin-top: 5px;
-      opacity: 0.8;
     }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 30px;
+      gap: 25px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
+
     .art-card {
       background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       overflow: hidden;
-      text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
     .art-card:hover {
-      transform: scale(1.02);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
+
     .art-card img {
       width: 100%;
       height: 380px;
       object-fit: cover;
+      transition: transform 0.4s ease;
     }
+
+    .art-card:hover img {
+      transform: scale(1.05);
+    }
+
     .art-info {
       padding: 15px;
+      text-align: center;
     }
+
     .art-title {
       font-size: 20px;
       font-weight: 600;
+      color: #111;
     }
+
     .art-price {
       color: #27ae60;
       font-size: 18px;
       margin: 8px 0;
     }
+
     .buy-btn {
       display: inline-block;
       background: #25d366;
       color: white;
       text-decoration: none;
       padding: 10px 18px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: 500;
       transition: background 0.3s;
     }
+
     .buy-btn:hover {
       background: #1ebe5d;
     }
+
+    .buy-btn::before {
+      content: "🛒 ";
+    }
+
+    .about {
+      max-width: 900px;
+      margin: 60px auto;
+      text-align: center;
+      padding: 0 20px;
+      color: #444;
+    }
+
+    .about h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .about p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
     footer {
       background-color: #000;
       color: white;
       text-align: center;
       padding: 20px;
-      margin-top: 30px;
+      font-size: 14px;
+      margin-top: 40px;
     }
+
     footer a {
       color: #25d366;
       text-decoration: none;
     }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
 
   <header>
-    <h1>🎨 Shahiem Abraham Art Store</h1>
-    <p>Exclusive Art Collection for sale </p>
+    <h1>Shahiem Abraham Art Store</h1>
+    <p>Exclusive Art Collection for Sale</p>
   </header>
 
   <section class="gallery">
@@ -123,9 +179,14 @@
     </div>
   </section>
 
+  <section class="about">
+    <h2>About the Artist</h2>
+    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
+    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a>.</p>
+  </section>
+
   <footer>
-    <p>Contact me on <a href="https://wa.me/27639193571">WhatsApp</a></p>
-    <p>© 2025 Shahiem Abraham</p>
+    <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
   </footer>
 
 </body>
