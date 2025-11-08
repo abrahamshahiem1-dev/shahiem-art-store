@@ -12,10 +12,12 @@
       background-color: #f7f7f7;
       color: #222;
       overflow-x: hidden;
-      touch-action: pan-y;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark {
+      background-color: #111;
+      color: #ddd;
     }
 
     header {
@@ -38,6 +40,24 @@
       margin-top: 5px;
     }
 
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(to right, #000000, #222);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -45,6 +65,16 @@
       padding: 40px 20px;
       max-width: 1200px;
       margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .art-card {
@@ -56,9 +86,13 @@
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
+    body.dark .art-card {
+      background: #1a1a1a;
+    }
+
     .art-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     }
 
     .art-card img {
@@ -81,7 +115,6 @@
     .art-title {
       font-size: 20px;
       font-weight: 600;
-      color: #111;
     }
 
     .art-price {
@@ -90,27 +123,50 @@
       margin: 8px 0;
     }
 
+    /* Purchase Options */
+    .buy-options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .buy-btn {
-      background: #111;
+      background: #25d366;
       color: white;
       text-decoration: none;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 500;
       transition: background 0.3s;
-      cursor: pointer;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
     }
 
     .buy-btn:hover {
-      background: #333;
+      background: #1ebe5d;
     }
 
-    .buy-btn span {
+    .email-btn {
+      background: #0078d7;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .email-btn:hover {
+      background: #0062b1;
+    }
+
+    /* Social Share Buttons */
+    .share {
+      margin-top: 10px;
+    }
+
+    .share a {
+      margin: 0 5px;
+      text-decoration: none;
       font-size: 18px;
     }
 
@@ -128,121 +184,136 @@
       color: #000;
     }
 
+    body.dark .about h2 {
+      color: #fff;
+    }
+
     .about p {
       font-size: 16px;
       line-height: 1.6;
+    }
+
+    /* Contact Form */
+    .contact {
+      background: #f2f2f2;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    body.dark .contact {
+      background: #1b1b1b;
+    }
+
+    .contact h2 {
+      margin-bottom: 15px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body.dark input, body.dark textarea {
+      background: #222;
+      color: white;
+      border: 1px solid #444;
+    }
+
+    button {
+      background: #000;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    button:hover {
+      background: #222;
     }
 
     footer {
       background-color: #000;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-size: 14px;
       margin-top: 40px;
+      position: relative;
     }
 
-    footer a {
-      color: #25d366;
-      text-decoration: none;
+    footer img {
+      width: 120px;
+      margin-top: 10px;
+      opacity: 0.7;
     }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Popup Styles */
-    .popup-overlay {
+    /* Floating Cart + Dark Mode */
+    .floating-icons {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .popup {
-      background: #fff;
-      padding: 30px 25px;
-      border-radius: 12px;
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .popup h3 {
-      margin-bottom: 15px;
-      font-size: 20px;
-      color: #000;
-    }
-
-    .popup-buttons {
+      bottom: 25px;
+      right: 25px;
       display: flex;
-      justify-content: center;
-      gap: 15px;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
     }
 
-    .popup-btn {
-      background: #25d366;
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
+    .icon-btn {
+      background: #000;
+      color: white;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
     }
 
-    .popup-btn.email {
-      background: #0078d7;
+    .icon-btn:hover {
+      transform: scale(1.1);
     }
 
-    .popup-btn:hover {
-      opacity: 0.9;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.9);}
-      to {opacity: 1; transform: scale(1);}
+    .dark body {
+      background: #000;
+      color: white;
     }
   </style>
 
   <script>
-    document.addEventListener('contextmenu', event => {
-      event.preventDefault();
-      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
-    });
+    document.addEventListener('contextmenu', e => e.preventDefault());
 
-    document.addEventListener('keydown', function(event) {
-      if (event.ctrlKey && (event.key === 's' || event.key === 'u')) {
-        event.preventDefault();
-        alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
-      }
-    });
-
-    function openPopup(title, whatsappMsg, emailSubject) {
-      const popup = document.querySelector('.popup-overlay');
-      popup.style.display = 'flex';
-      document.getElementById('popup-title').innerText = title;
-      document.getElementById('whatsapp-link').href = `https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20${whatsappMsg}%20artwork.`;
-      document.getElementById('email-link').href = `mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20${emailSubject}%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20${emailSubject}%20artwork.%0A`;
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
     }
 
-    function closePopup() {
-      document.querySelector('.popup-overlay').style.display = 'none';
+    function openCart() {
+      alert("🛒 To purchase, please contact via WhatsApp or Email under each artwork.");
     }
   </script>
 </head>
 <body>
 
   <header>
-    <h1>Tshepiso Abraham Art Store</h1>
+    <h1>Shahiem Abraham Art Store</h1>
     <p>Exclusive Art Collection for Sale</p>
   </header>
+
+  <section class="hero">
+    <h2>"Art that Speaks Emotion"</h2>
+    <p>Each piece is a reflection of life, texture, and fashion — crafted by Shahiem Abraham.</p>
+  </section>
 
   <section class="gallery">
     <div class="art-card">
@@ -250,9 +321,15 @@
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
-        <button class="buy-btn" onclick="openPopup('RUST BOY','RUST BOY','RUST BOY')">
-          <span>🛒</span> Buy Artwork
-        </button>
+        <div class="buy-options">
+          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>
+        </div>
+        <div class="share">
+          <a href="#">📸</a>
+          <a href="#">💬</a>
+          <a href="#">🌍</a>
+        </div>
       </div>
     </div>
 
@@ -261,9 +338,15 @@
       <div class="art-info">
         <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
-        <button class="buy-btn" onclick="openPopup('LV Rust BOY','LV Rust BOY','LV Rust BOY')">
-          <span>🛒</span> Buy Artwork
-        </button>
+        <div class="buy-options">
+          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>
+        </div>
+        <div class="share">
+          <a href="#">📸</a>
+          <a href="#">💬</a>
+          <a href="#">🌍</a>
+        </div>
       </div>
     </div>
 
@@ -272,34 +355,44 @@
       <div class="art-info">
         <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
-        <button class="buy-btn" onclick="openPopup('Louis Vuitton Boy','Louis Vuitton Boy','Louis Vuitton Boy')">
-          <span>🛒</span> Buy Artwork
-        </button>
+        <div class="buy-options">
+          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>
+        </div>
+        <div class="share">
+          <a href="#">📸</a>
+          <a href="#">💬</a>
+          <a href="#">🌍</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="popup-overlay" onclick="closePopup()">
-    <div class="popup" onclick="event.stopPropagation()">
-      <h3 id="popup-title">Buy Artwork</h3>
-      <div class="popup-buttons">
-        <a id="whatsapp-link" class="popup-btn" href="#">WhatsApp</a>
-        <a id="email-link" class="popup-btn email" href="#">Email</a>
-      </div>
-      <br>
-      <button class="buy-btn" style="background:#555;" onclick="closePopup()">Close</button>
-    </div>
-  </div>
-
   <section class="about">
     <h2>About the Artist</h2>
-    <p>I'm <strong>Tshepiso Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
+    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
     <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a> or email me at <a href="mailto:abrahamshahiem1@gmail.com">abrahamshahiem1@gmail.com</a>.</p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <form action="mailto:abrahamshahiem1@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <footer>
     <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
+    <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/signature.png" alt="Signature">
   </footer>
+
+  <div class="floating-icons">
+    <button class="icon-btn" onclick="openCart()">🛒</button>
+    <button class="icon-btn" onclick="toggleDarkMode()">🌗</button>
+  </div>
 
 </body>
 </html>
