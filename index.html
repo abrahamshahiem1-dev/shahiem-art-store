@@ -1,148 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shahiem Abraham Art Store</title>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
+      background-color: #f3f3f3;
+      color: #222;
     }
-
     header {
       background-color: #000;
       color: white;
-      padding: 1.5rem;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
+      text-align: center;
+      padding: 20px;
     }
-
-    h1 {
+    header h1 {
+      font-size: 26px;
       margin: 0;
-      font-size: 2rem;
     }
-
-    p {
+    header p {
+      font-size: 16px;
       margin-top: 5px;
-      font-size: 1rem;
-      color: #ddd;
+      opacity: 0.8;
     }
-
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       padding: 30px;
-      max-width: 1200px;
-      margin: auto;
     }
-
     .art-card {
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      transition: transform 0.3s;
     }
-
     .art-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transform: scale(1.02);
     }
-
     .art-card img {
       width: 100%;
-      height: auto;
-      border-bottom: 2px solid #eee;
+      height: 380px;
+      object-fit: cover;
     }
-
     .art-info {
       padding: 15px;
     }
-
-    .art-info h3 {
-      margin: 10px 0 5px;
-      font-size: 1.3rem;
-      color: #111;
+    .art-title {
+      font-size: 20px;
+      font-weight: 600;
     }
-
-    .art-info p {
-      font-size: 1rem;
-      color: #666;
+    .art-price {
+      color: #27ae60;
+      font-size: 18px;
+      margin: 8px 0;
     }
-
-    .price {
-      font-weight: bold;
-      color: #000;
-      margin: 10px 0;
-    }
-
-    .buy-button {
+    .buy-btn {
       display: inline-block;
-      background-color: #000;
+      background: #25d366;
       color: white;
       text-decoration: none;
-      padding: 10px 25px;
-      border-radius: 30px;
-      transition: background 0.3s ease;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: background 0.3s;
     }
-
-    .buy-button:hover {
-      background-color: #444;
+    .buy-btn:hover {
+      background: #1ebe5d;
     }
-
     footer {
       background-color: #000;
       color: white;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      margin-top: 50px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    footer a {
+      color: #25d366;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>🎨 Tshepiso Abraham Art Store</h1>
-    <p>Exclusive Art Collection for Sale</p>
+    <h1>🎨 Shahiem Abraham Art Store</h1>
+    <p>Welcome to my online art portfolio</p>
   </header>
 
   <section class="gallery">
     <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg" alt="RUST BOY" />
+      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6.jpg" alt="Rust Boy">
       <div class="art-info">
-        <h3>RUST BOY</h3>
-        <p class="price">$205.55</p>
-        <a href="https://wa.me/?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork." class="buy-button">Buy on WhatsApp</a>
+        <div class="art-title">RUST BOY</div>
+        <div class="art-price">$205.55</div>
+        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">Buy Now</a>
       </div>
     </div>
 
     <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1).jpg" alt="LV Rust BOY" />
+      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1).jpg" alt="LV Rust Boy">
       <div class="art-info">
-        <h3>LV Rust BOY</h3>
-        <p class="price">$347.40</p>
-        <a href="https://wa.me/?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork." class="buy-button">Buy on WhatsApp</a>
+        <div class="art-title">LV Rust BOY</div>
+        <div class="art-price">$347.40</div>
+        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">Buy Now</a>
       </div>
     </div>
 
     <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e.jpg" alt="Louis Vuitton boy" />
+      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e.jpg" alt="Louis Vuitton Boy">
       <div class="art-info">
-        <h3>Louis Vuitton boy</h3>
-        <p class="price">$428.46</p>
-        <a href="https://wa.me/?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20boy%20artwork." class="buy-button">Buy on WhatsApp</a>
+        <div class="art-title">Louis Vuitton Boy</div>
+        <div class="art-price">$428.46</div>
+        <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">Buy Now</a>
       </div>
     </div>
   </section>
 
   <footer>
-    © 2025 Shahiem Abraham — All Rights Reserved
+    <p>Contact me on <a href="https://wa.me/27639193571">WhatsApp</a></p>
+    <p>© 2025 Shahiem Abraham</p>
   </footer>
+
 </body>
 </html>
