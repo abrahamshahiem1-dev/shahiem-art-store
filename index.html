@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shahiem Abraham Art Store</title>
   <style>
     body {
@@ -12,12 +12,10 @@
       background-color: #f7f7f7;
       color: #222;
       overflow-x: hidden;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    body.dark {
-      background-color: #111;
-      color: #ddd;
+      touch-action: pan-y;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     header {
@@ -29,32 +27,15 @@
     }
 
     header h1 {
-      font-size: 26px;
+      font-size: 28px;
       margin: 0;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     header p {
       font-size: 15px;
       color: #bbb;
       margin-top: 5px;
-    }
-
-    .hero {
-      background: linear-gradient(to right, #000000, #222);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .hero h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #ccc;
     }
 
     .gallery {
@@ -73,15 +54,12 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    body.dark .art-card {
-      background: #1a1a1a;
+      animation: fadeIn 1s ease;
     }
 
     .art-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
     .art-card img {
@@ -96,6 +74,11 @@
       transform: scale(1.05);
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .art-info {
       padding: 15px;
       text-align: center;
@@ -104,6 +87,7 @@
     .art-title {
       font-size: 20px;
       font-weight: 600;
+      color: #111;
     }
 
     .art-price {
@@ -112,20 +96,35 @@
       margin: 8px 0;
     }
 
-    .buy-btn {
-      background: #000;
-      color: white;
+    .buy-options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .buy-btn, .email-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       text-decoration: none;
+      color: white;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 500;
-      transition: background 0.3s;
-      cursor: pointer;
-      display: inline-block;
+      transition: transform 0.3s, background 0.3s;
     }
 
-    .buy-btn:hover {
-      background: #333;
+    .buy-btn {
+      background: #25d366;
+    }
+
+    .email-btn {
+      background: #0078d7;
+    }
+
+    .buy-btn:hover, .email-btn:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
     }
 
     .about {
@@ -142,10 +141,6 @@
       color: #000;
     }
 
-    body.dark .about h2 {
-      color: #fff;
-    }
-
     .about p {
       font-size: 16px;
       line-height: 1.6;
@@ -158,94 +153,53 @@
       padding: 25px;
       font-size: 14px;
       margin-top: 40px;
-      position: relative;
     }
 
-    /* Popup Overlay */
-    .popup-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      animation: fadeIn 0.3s ease;
+    footer a {
+      color: #25d366;
+      text-decoration: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    footer a:hover {
+      text-decoration: underline;
     }
 
-    /* Popup Box */
-    .popup {
-      background: white;
-      color: #000;
-      padding: 25px 30px;
-      border-radius: 12px;
-      text-align: center;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      position: relative;
-      animation: slideUp 0.3s ease;
+    footer .socials {
+      margin-top: 10px;
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .popup h3 {
-      margin: 10px 0;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .popup p {
-      font-size: 16px;
-      margin: 8px 0 20px;
-    }
-
-    .popup button {
-      background: #000;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 15px;
-      margin: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .popup button:hover {
-      background: #333;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 8px; right: 12px;
-      background: none;
-      border: none;
-      font-size: 22px;
-      color: #555;
-      cursor: pointer;
+    footer .socials a {
+      margin: 0 8px;
+      font-size: 18px;
     }
   </style>
+
+  <script>
+    // Copyright protection script
+    document.addEventListener('contextmenu', event => {
+      event.preventDefault();
+      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.ctrlKey && (event.key === 's' || event.key === 'S' || event.key === 'u' || event.key === 'U' || event.key === 'p' || event.key === 'P')) {
+        event.preventDefault();
+        alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
+      }
+    });
+
+    document.addEventListener('dragstart', event => {
+      event.preventDefault();
+      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
+    });
+  </script>
 </head>
+
 <body>
   <header>
     <h1>Shahiem Abraham Art Store</h1>
     <p>Exclusive Art Collection for Sale</p>
   </header>
-
-  <section class="hero">
-    <h2>"Art that Speaks Emotion"</h2>
-    <p>Each piece is a reflection of life, texture, and fashion — crafted by Shahiem Abraham.</p>
-  </section>
 
   <section class="gallery">
     <div class="art-card">
@@ -253,75 +207,52 @@
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
-        <span class="buy-btn" onclick="openPopup('RUST BOY', '$205.55')">Buy</span>
+        <div class="buy-options">
+          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">🛒 WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20RUST%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20RUST%20BOY%20artwork.%0A">📧 Email</a>
+        </div>
       </div>
     </div>
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1)%20(1).jpg" alt="LV Rust Boy">
       <div class="art-info">
-        <div class="art-title">LV RUST BOY</div>
+        <div class="art-title">LV Rust BOY</div>
         <div class="art-price">$347.40</div>
-        <span class="buy-btn" onclick="openPopup('LV RUST BOY', '$347.40')">Buy</span>
+        <div class="buy-options">
+          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">🛒 WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20LV%20Rust%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20LV%20Rust%20BOY%20artwork.%0A">📧 Email</a>
+        </div>
       </div>
     </div>
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e%20(2).jpg" alt="Louis Vuitton Boy">
       <div class="art-info">
-        <div class="art-title">LOUIS VUITTON BOY</div>
+        <div class="art-title">Louis Vuitton Boy</div>
         <div class="art-price">$428.46</div>
-        <span class="buy-btn" onclick="openPopup('LOUIS VUITTON BOY', '$428.46')">Buy</span>
+        <div class="buy-options">
+          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">🛒 WhatsApp</a>
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20Louis%20Vuitton%20Boy%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20Louis%20Vuitton%20Boy%20artwork.%0A">📧 Email</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <section class="about">
+    <h2>About the Artist</h2>
+    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
+    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a> or email me at <a href="mailto:abrahamshahiem1@gmail.com">abrahamshahiem1@gmail.com</a>.</p>
+  </section>
+
   <footer>
     <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
+    <div class="socials">
+      <a href="https://wa.me/27639193571">WhatsApp</a> |
+      <a href="mailto:abrahamshahiem1@gmail.com">Email</a> |
+      <a href="#">Instagram (coming soon)</a>
+    </div>
   </footer>
 
-  <!-- Popup Window -->
-  <div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
-    <div class="popup" id="popupBox">
-      <button class="close-btn" onclick="closePopup()">×</button>
-      <h3 id="popupTitle"></h3>
-      <p id="popupPrice"></p>
-      <p>Please select your preferred contact method to proceed with your purchase.</p>
-      <button id="whatsappBtn">Contact via WhatsApp</button>
-      <button id="emailBtn">Contact via Email</button>
-    </div>
-  </div>
-
-  <script>
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupTitle = document.getElementById('popupTitle');
-    const popupPrice = document.getElementById('popupPrice');
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    const emailBtn = document.getElementById('emailBtn');
-
-    function openPopup(artName, price) {
-      popupTitle.textContent = artName;
-      popupPrice.textContent = "Price: " + price;
-      popupOverlay.style.display = "flex";
-
-      const whatsappMessage = encodeURIComponent(
-        `Good day Shahiem,\n\nI am interested in purchasing your artwork titled "${artName}" priced at ${price}. Please provide more details regarding availability and payment options.\n\nKind regards,`
-      );
-
-      const emailSubject = encodeURIComponent(`Inquiry about "${artName}"`);
-      const emailBody = encodeURIComponent(
-        `Good day Shahiem,\n\nI would like to inquire about your artwork titled "${artName}" priced at ${price}. Kindly share more information about availability and purchasing process.\n\nKind regards,`
-      );
-
-      whatsappBtn.onclick = () => window.open(`https://wa.me/27639193571?text=${whatsappMessage}`, '_blank');
-      emailBtn.onclick = () => window.open(`mailto:abrahamshahiem1@gmail.com?subject=${emailSubject}&body=${emailBody}`);
-    }
-
-    function closePopup(e) {
-      if (!e || e.target === popupOverlay || e.target.classList.contains('close-btn')) {
-        popupOverlay.style.display = "none";
-      }
-    }
-  </script>
 </body>
 </html>
