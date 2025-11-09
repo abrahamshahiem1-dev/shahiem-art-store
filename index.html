@@ -431,21 +431,23 @@ window.addEventListener("load", () => {
     }  
   });  
 </script>
-function sendInstantMessage(platform, artName, artPrice) {
-  const message = `Hi Shahiem! I'm interested in buying ${artName} for ${artPrice}.`;
 
-  if (platform === 'whatsapp') {
-    // Open WhatsApp instantly
-    const whatsappUrl = `https://wa.me/27639193571?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  } 
-  else if (platform === 'email') {
-    // Open Email instantly
-    const subject = `Interest in ${artName}`;
-    const mailtoUrl = `mailto:abrahamshahiem1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-    window.open(mailtoUrl, '_blank');
-  }
-}
-</script>
+  <script>
+    function sendInstantMessage(platform, artName, artPrice) {
+      const message = `Hi Shahiem! I'm interested in buying ${artName} for ${artPrice}.`;
+
+      if (platform === 'whatsapp') {
+        // Open WhatsApp instantly
+        const whatsappUrl = `https://wa.me/27639193571?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      } 
+      else if (platform === 'email') {
+        // Open Email instantly
+        const subject = `Interest in ${artName}`;
+        const mailtoUrl = `mailto:abrahamshahiem1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+        window.open(mailtoUrl, '_blank');
+      }
+    }
+  </script>
 </body>
 </html>
