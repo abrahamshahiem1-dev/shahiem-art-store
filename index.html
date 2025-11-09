@@ -431,7 +431,6 @@ window.addEventListener("load", () => {
     }  
   });  
 </script>
-<script>
 function sendInstantMessage(platform, artName, artPrice) {
   const message = `Hi Shahiem! I'm interested in buying ${artName} for ${artPrice}.`;
 
@@ -447,6 +446,23 @@ function sendInstantMessage(platform, artName, artPrice) {
     window.open(mailtoUrl, '_blank');
   }
 }
-</script></body>
+</script>
+<!-- your last section or div here -->
 
+  <button id="scrollTopBtn" style="position:fixed; bottom:80px; right:25px; background:#000; color:white; border:none; padding:12px 14px; border-radius:50%; font-size:20px; display:none; cursor:pointer; z-index:999;">↑</button>
+
+  <script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
 </html>
