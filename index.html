@@ -364,44 +364,52 @@ window.addEventListener("load", () => {
   </div>    
 </div>   
   </section>  <!-- NEW ARTWORKS START -->
+<!-- NEW ARTWORKS START -->
 <div class="art-card">
-  <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/92770ecf-d25b-45bc-97fd-9db4b3adbe12%20(2)%20(1).png" 
-       alt="Solitude Beyond Earth" 
-       onclick="alert('Solitude Beyond Earth — $605.70\n\nSolitude Beyond Earth captures the timeless stillness of a lone explorer gazing upon their home world from the silence of the cosmos. Bathed in soft lunar light and surrounded by the infinite dark, the astronaut becomes both a symbol of isolation and triumph — a reflection of humankind’s eternal quest for meaning and connection.\n\nEdition: 1/1 — Original NFT Artwork\nMedium: Digital Fine Art (Oil Painting Style)');">
+  <img 
+    src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/92770ecf-d25b-45bc-97fd-9db4b3adbe12%20(2)%20(1).png" 
+    alt="Solitude Beyond Earth"
+    onclick="showDescription('Solitude Beyond Earth', 'Solitude Beyond Earth captures the timeless stillness of a lone explorer gazing upon their home world from the silence of the cosmos. Bathed in soft lunar light and surrounded by the infinite dark, the astronaut becomes both a symbol of isolation and triumph — a reflection of humankind’s eternal quest for meaning and connection.')">
   <div class="art-info">
     <div class="art-title">Solitude Beyond Earth</div>
     <div class="art-price">$605.70</div>
     <div class="buy-options">
-      <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp', 'Solitude Beyond Earth', '$605.70')">WhatsApp</a>
-      <a class="email-btn" href="#" onclick="sendInstantMessage('email', 'Solitude Beyond Earth', '$605.70')">Email</a>
+      <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp')">WhatsApp</a>
+      <a class="email-btn" href="#" onclick="sendInstantMessage('email')">Email</a>
     </div>
   </div>
 </div>
 
 <div class="art-card">
-  <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/a841d306-e210-4f64-87bd-fb37927a5da7%20(1)%20(1).png" 
-       alt="The Eternal Spark" 
-       onclick="alert('The Eternal Spark — $306.32\n\nA vibrant fusion of fire and motion — The Eternal Spark captures the birth of energy and creation itself. Painted in deep blues, golds, and reds, this one-of-a-kind abstract symbolizes the unstoppable force of life rising from chaos.\n\nMedium: Digital Fine Art\nEdition: 1/1 — Original NFT');">
+  <img 
+    src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/a841d306-e210-4f64-87bd-fb37927a5da7%20(1)%20(1).png" 
+    alt="The Eternal Spark"
+    onclick="showDescription('The Eternal Spark', 'A vibrant fusion of fire and motion — The Eternal Spark captures the birth of energy and creation itself. Painted in deep blues, golds, and reds, this abstract symbolizes the unstoppable force of life rising from chaos.')">
   <div class="art-info">
     <div class="art-title">The Eternal Spark</div>
     <div class="art-price">$306.32</div>
     <div class="buy-options">
-      <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp', 'The Eternal Spark', '$306.32')">WhatsApp</a>
-      <a class="email-btn" href="#" onclick="sendInstantMessage('email', 'The Eternal Spark', '$306.32')">Email</a>
+      <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp')">WhatsApp</a>
+      <a class="email-btn" href="#" onclick="sendInstantMessage('email')">Email</a>
     </div>
   </div>
 </div>
 
 <div class="art-card">
-  <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/cf41da81-4ca4-4442-96e2-61ffd7c33b5b%20(2)%20(1).png" 
-       alt="Ethereal Currents" 
-       onclick="alert('Ethereal Currents — $503\n\nEthereal Currents captures the essence of freedom through the purity of water and light. Painted in cool, flowing tones of blue and silver, the artwork symbolizes inner calm, movement, and rebirth. Waves of luminous energy intertwine with rays of light — representing the eternal rhythm between chaos and peace.\n\nEdition: 1/1 — Original NFT Artwork\nMedium: Digital Fine Art (Oil & Acrylic Style)');">
+  <img 
+    src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/cf41da81-4ca4-4442-96e2-61ffd7c33b5b%20(2)%20(1).png" 
+    alt="Ethereal Currents"
+    onclick="showDescription('Ethereal Currents', 'Ethereal Currents captures the essence of freedom through the purity of water and light. Painted in cool, flowing tones of blue and silver, the artwork symbolizes inner calm, movement, and rebirth — the eternal rhythm between chaos and peace.')">
   <div class="art-info">
     <div class="art-title">Ethereal Currents</div>
     <div class="art-price">$503</div>
     <div class="buy-options">
-      <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp', 'Ethereal Currents', '$503')">WhatsApp</a>
-      <a class="email-btn" href="#" onclick="sendInstantMessage('email', 'Ethereal Currents', '$503')">Email</a>
+      <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp')">WhatsApp</a>
+      <a class="email-btn" href="#" onclick="sendInstantMessage('email')">Email</a>
+    </div>
+  </div>
+</div>
+<!-- NEW ARTWORKS END -->
     </div>
   </div>
 </div>
@@ -493,5 +501,10 @@ window.addEventListener("load", () => {
       }
     }
   </script>
+<script>
+  function showDescription(title, description) {
+    alert(title + " — " + description);
+  }
+</script>
 </body>
 </html>
