@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shahiem Abraham Art Store</title>
   <style>
     body {
@@ -40,7 +40,6 @@
       margin-top: 5px;
     }
 
-    /* Hero Banner */
     .hero {
       background: linear-gradient(to right, #000000, #222);
       color: white;
@@ -65,16 +64,6 @@
       padding: 40px 20px;
       max-width: 1200px;
       margin: auto;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .art-card {
@@ -123,51 +112,20 @@
       margin: 8px 0;
     }
 
-    /* Purchase Options */
-    .buy-options {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
     .buy-btn {
-      background: #25d366;
+      background: #000;
       color: white;
       text-decoration: none;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 500;
       transition: background 0.3s;
+      cursor: pointer;
+      display: inline-block;
     }
 
     .buy-btn:hover {
-      background: #1ebe5d;
-    }
-
-    .email-btn {
-      background: #0078d7;
-      color: white;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background 0.3s;
-    }
-
-    .email-btn:hover {
-      background: #0062b1;
-    }
-
-    /* Social Share Buttons */
-    .share {
-      margin-top: 10px;
-    }
-
-    .share a {
-      margin: 0 5px;
-      text-decoration: none;
-      font-size: 18px;
+      background: #333;
     }
 
     .about {
@@ -193,55 +151,6 @@
       line-height: 1.6;
     }
 
-    /* Contact Form */
-    .contact {
-      background: #f2f2f2;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    body.dark .contact {
-      background: #1b1b1b;
-    }
-
-    .contact h2 {
-      margin-bottom: 15px;
-    }
-
-    form {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: "Poppins", sans-serif;
-    }
-
-    body.dark input, body.dark textarea {
-      background: #222;
-      color: white;
-      border: 1px solid #444;
-    }
-
-    button {
-      background: #000;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    button:hover {
-      background: #222;
-    }
-
     footer {
       background-color: #000;
       color: white;
@@ -252,66 +161,89 @@
       position: relative;
     }
 
-    footer img {
-      width: 120px;
-      margin-top: 10px;
-      opacity: 0.7;
-    }
-
-    /* Floating Cart + Dark Mode */
-    .floating-icons {
+    /* Popup Overlay */
+    .popup-overlay {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
       z-index: 999;
+      animation: fadeIn 0.3s ease;
     }
 
-    .icon-btn {
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Popup Box */
+    .popup {
+      background: white;
+      color: #000;
+      padding: 25px 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .popup h3 {
+      margin: 10px 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .popup p {
+      font-size: 16px;
+      margin: 8px 0 20px;
+    }
+
+    .popup button {
       background: #000;
       color: white;
       border: none;
-      padding: 12px 14px;
-      border-radius: 50%;
-      font-size: 20px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 15px;
+      margin: 5px;
       cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
+      transition: background 0.3s;
     }
 
-    .icon-btn:hover {
-      transform: scale(1.1);
+    .popup button:hover {
+      background: #333;
     }
 
-    .dark body {
-      background: #000;
-      color: white;
+    .close-btn {
+      position: absolute;
+      top: 8px; right: 12px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #555;
+      cursor: pointer;
     }
   </style>
-
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-    }
-
-    function openCart() {
-      alert("🛒 To purchase, please contact via WhatsApp or Email under each artwork.");
-    }
-  </script>
 </head>
 <body>
-
   <header>
-    <h1>Abraham'$ Art Store</h1>
+    <h1>Shahiem Abraham Art Store</h1>
     <p>Exclusive Art Collection for Sale</p>
   </header>
 
   <section class="hero">
-    <h2>Art that Speaks Emotion</h2>
+    <h2>"Art that Speaks Emotion"</h2>
     <p>Each piece is a reflection of life, texture, and fashion — crafted by Shahiem Abraham.</p>
   </section>
 
@@ -321,120 +253,75 @@
       <div class="art-info">
         <div class="art-title">RUST BOY</div>
         <div class="art-price">$205.55</div>
-        <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>
-        </div>
-      
-        </div>
+        <span class="buy-btn" onclick="openPopup('RUST BOY', '$205.55')">Buy</span>
       </div>
     </div>
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1)%20(1).jpg" alt="LV Rust Boy">
       <div class="art-info">
-        <div class="art-title">LV Rust BOY</div>
+        <div class="art-title">LV RUST BOY</div>
         <div class="art-price">$347.40</div>
-        <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>
-        </div>
-
-        </div>
+        <span class="buy-btn" onclick="openPopup('LV RUST BOY', '$347.40')">Buy</span>
       </div>
     </div>
 
     <div class="art-card">
       <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e%20(2).jpg" alt="Louis Vuitton Boy">
       <div class="art-info">
-        <div class="art-title">Louis Vuitton Boy</div>
+        <div class="art-title">LOUIS VUITTON BOY</div>
         <div class="art-price">$428.46</div>
-        <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>
-        </div>
-        </div>
+        <span class="buy-btn" onclick="openPopup('LOUIS VUITTON BOY', '$428.46')">Buy</span>
       </div>
     </div>
   </section>
 
-  <section class="about">
-    <h2>About the Artist</h2>
-    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
-    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a> or email me at <a href="mailto:abrahamshahiem1@gmail.com">abrahamshahiem1@gmail.com</a>.</p>
-  </section>
-
-  <section class="contact">
-    <h2>Contact Me</h2>
-    <form action="mailto:abrahamshahiem1@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
   <footer>
     <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
+  </footer>
 
-
-  <div class="floating-icons">
-    <button class="icon-btn" onclick="openCart()">🛒</button>
-    <button class="icon-btn" onclick="toggleDarkMode()">🌗</button>
+  <!-- Popup Window -->
+  <div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+    <div class="popup" id="popupBox">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h3 id="popupTitle"></h3>
+      <p id="popupPrice"></p>
+      <p>Please select your preferred contact method to proceed with your purchase.</p>
+      <button id="whatsappBtn">Contact via WhatsApp</button>
+      <button id="emailBtn">Contact via Email</button>
+    </div>
   </div>
 
-<!-- Copyright Protection Popup -->
-<div id="copyrightAlert" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  padding: 20px;
-">
-  <div style="background: #111; padding: 30px; border-radius: 12px; max-width: 350px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-    <h3 style="margin-bottom: 10px;">⚠️ Copyright Protected</h3>
-    <p style="font-size: 15px;">This artwork is protected by copyright © 2025 <b>Shahiem Abraham</b>.<br>
-    Unauthorized use, copying or saving of this content is prohibited.</p>
-    <button onclick="closeAlert()" style="margin-top: 15px; background: #25d366; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer;">Okay</button>
-  </div>
-</div>
+  <script>
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupPrice = document.getElementById('popupPrice');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const emailBtn = document.getElementById('emailBtn');
 
-<script>
-  const alertBox = document.getElementById("copyrightAlert");
+    function openPopup(artName, price) {
+      popupTitle.textContent = artName;
+      popupPrice.textContent = "Price: " + price;
+      popupOverlay.style.display = "flex";
 
-  function showAlert() {
-    alertBox.style.display = "flex";
-  }
+      const whatsappMessage = encodeURIComponent(
+        `Good day Shahiem,\n\nI am interested in purchasing your artwork titled "${artName}" priced at ${price}. Please provide more details regarding availability and payment options.\n\nKind regards,`
+      );
 
-  function closeAlert() {
-    alertBox.style.display = "none";
-  }
+      const emailSubject = encodeURIComponent(`Inquiry about "${artName}"`);
+      const emailBody = encodeURIComponent(
+        `Good day Shahiem,\n\nI would like to inquire about your artwork titled "${artName}" priced at ${price}. Kindly share more information about availability and purchasing process.\n\nKind regards,`
+      );
 
-  // Disable right-click, copy, and key combos
-  document.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-    showAlert();
-  });
-
-  document.addEventListener("copy", (e) => {
-    e.preventDefault();
-    showAlert();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.ctrlKey && (e.key === "s" || e.key === "u" || e.key === "p")) {
-      e.preventDefault();
-      showAlert();
+      whatsappBtn.onclick = () => window.open(`https://wa.me/27639193571?text=${whatsappMessage}`, '_blank');
+      emailBtn.onclick = () => window.open(`mailto:abrahamshahiem1@gmail.com?subject=${emailSubject}&body=${emailBody}`);
     }
-  });
-</script></body>
+
+    function closePopup(e) {
+      if (!e || e.target === popupOverlay || e.target.classList.contains('close-btn')) {
+        popupOverlay.style.display = "none";
+      }
+    }
+  </script>
+</body>
 </html>
