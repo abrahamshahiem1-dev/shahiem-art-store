@@ -331,10 +331,9 @@ function openCart() {
   <div class="art-info">    
     <div class="art-title">Louis Vuitton Boy</div>    
     <div class="art-price">$428.46</div>    
-    <div class="buy-options">    
-      <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>    
-      <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>    
-    </div>    
+    <div class="buy-options">
+  <a class="buy-btn" href="#" onclick="confirmPurchase('Louis Vuitton Boy - $428.46')">Buy</a>
+    </div>
     </div>    
   </div>    
 </div>    </section>    <section class="about">    
@@ -406,6 +405,23 @@ function openCart() {
     }  
   });  
 </script>
-</body> 
+<script>
+  function showPurchaseOptions(artName, price) {
+    const message = `Hi Shahiem! I'm interested in buying the "${artName}" artwork priced at ${price}.`;
+
+    const choice = confirm(`Would you like to contact via WhatsApp or Email?\n\nClick OK for WhatsApp, Cancel for Email.`);
+
+    if (choice) {
+      // WhatsApp option
+      const whatsappUrl = `https://wa.me/27639193571?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    } else {
+      // Email option
+      const mailtoUrl = `mailto:abrahamshahiem1@gmail.com?subject=Artwork Purchase Inquiry&body=${encodeURIComponent(message)}`;
+      window.open(mailtoUrl, '_blank');
+    }
+  }
+</script>
+</body>
 
 </html>
