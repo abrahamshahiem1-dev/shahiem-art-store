@@ -320,9 +320,9 @@ function openCart() {
   <div class="art-info">    
     <div class="art-title">LV Rust BOY</div>    
     <div class="art-price">$347.40</div>    
-    <div class="buy-options">    
-      <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>    
-      <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>    
+       <div class="buy-options">
+  <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp', 'LV Rust BOY', '$347.40')">WhatsApp</a>
+  <a class="email-btn" href="#" onclick="sendInstantMessage('email', 'LV Rust BOY', '$347.40')">Email</a> 
     </div>    
     </div>    
   </div>    
@@ -331,9 +331,10 @@ function openCart() {
   <div class="art-info">    
     <div class="art-title">Louis Vuitton Boy</div>    
     <div class="art-price">$428.46</div>    
-    <div class="buy-options">
-    <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>    
-      <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>    
+     <div class="buy-options">
+  <a class="buy-btn" href="#" onclick="sendInstantMessage('whatsapp', 'Louis Vuitton Boy', '$428.46')">WhatsApp</a>
+  <a class="email-btn" href="#" onclick="sendInstantMessage('email', 'Louis Vuitton Boy', '$428.46')">Email</a>
+</div>
     </div>    
     </div>    
   </div>    
@@ -407,22 +408,21 @@ function openCart() {
   });  
 </script>
 <script>
-  function showPurchaseOptions(Luis Vuitton boy, $428.46) {
-    const message = `Hi Shahiem! I'm interested in buying the "${Louis Vuitton boy}" artwork priced at ${$428.46}.`;
+function sendInstantMessage(platform, artName, artPrice) {
+  const message = `Hi Shahiem! I'm interested in buying ${artName} for ${artPrice}.`;
 
-    const choice = confirm(`Would you like to contact via WhatsApp or Email?\n\nClick OK for WhatsApp, Cancel for Email.`);
-
-    if (choice) {
-      // WhatsApp option
-      const whatsappUrl = `https://wa.me/27639193571?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-    } else {
-      // Email option
-      const mailtoUrl = `mailto:abrahamshahiem1@gmail.com?subject=Artwork Purchase Inquiry&body=${encodeURIComponent(message)}`;
-      window.open(mailtoUrl, '_blank');
-    }
+  if (platform === 'whatsapp') {
+    // Open WhatsApp instantly
+    const whatsappUrl = `https://wa.me/27639193571?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  } 
+  else if (platform === 'email') {
+    // Open Email instantly
+    const subject = `Interest in ${artName}`;
+    const mailtoUrl = `mailto:abrahamshahiem1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.open(mailtoUrl, '_blank');
   }
-</script>
-</body>
+}
+</script></body>
 
 </html>
