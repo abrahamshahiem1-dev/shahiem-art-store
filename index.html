@@ -1,258 +1,364 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shahiem Abraham Art Store</title>
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-      color: #222;
-      overflow-x: hidden;
-      touch-action: pan-y;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Shahiem Abraham Art Store</title>  
+  <style>  
+    body {  
+      font-family: "Poppins", sans-serif;  
+      margin: 0;  
+      padding: 0;  
+      background-color: #f7f7f7;  
+      color: #222;  
+      overflow-x: hidden;  
+      transition: background 0.4s, color 0.4s;  
+    }  body.dark {  
+  background-color: #111;  
+  color: #ddd;  
+}  
 
-    header {
-      background-color: #000;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
+header {  
+  background-color: #000;  
+  color: white;  
+  text-align: center;  
+  padding: 25px 15px;  
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);  
+}  
 
-    header h1 {
-      font-size: 28px;
-      margin: 0;
-      font-weight: 700;
-    }
+header h1 {  
+  font-size: 26px;  
+  margin: 0;  
+  font-weight: 600;  
+}  
 
-    header p {
-      font-size: 15px;
-      color: #bbb;
-      margin-top: 5px;
-    }
+header p {  
+  font-size: 15px;  
+  color: #bbb;  
+  margin-top: 5px;  
+}  
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+/* Hero Banner */  
+.hero {  
+  background: linear-gradient(to right, #000000, #222);  
+  color: white;  
+  text-align: center;  
+  padding: 60px 20px;  
+}  
 
-    .art-card {
-      position: relative;
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeIn 1s ease;
-    }
+.hero h2 {  
+  font-size: 32px;  
+  margin-bottom: 10px;  
+}  
 
-    .art-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
+.hero p {  
+  font-size: 18px;  
+  color: #ccc;  
+}  
 
-    .art-card img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      pointer-events: none;
-    }
+.gallery {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
+  gap: 25px;  
+  padding: 40px 20px;  
+  max-width: 1200px;  
+  margin: auto;  
+  opacity: 0;  
+  transform: translateY(20px);  
+  animation: fadeInUp 1s ease forwards;  
+}  
 
-    .art-card:hover img {
-      transform: scale(1.05);
-    }
+@keyframes fadeInUp {  
+  to {  
+    opacity: 1;  
+    transform: translateY(0);  
+  }  
+}  
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+.art-card {  
+  position: relative;  
+  background: white;  
+  border-radius: 14px;  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);  
+  overflow: hidden;  
+  transition: transform 0.3s, box-shadow 0.3s;  
+}  
 
-    .art-info {
-      padding: 15px;
-      text-align: center;
-    }
+body.dark .art-card {  
+  background: #1a1a1a;  
+}  
 
-    .art-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #111;
-    }
+.art-card:hover {  
+  transform: translateY(-5px);  
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);  
+}  
 
-    .art-price {
-      color: #27ae60;
-      font-size: 18px;
-      margin: 8px 0;
-    }
+.art-card img {  
+  width: 100%;  
+  height: 380px;  
+  object-fit: cover;  
+  transition: transform 0.4s ease;  
+  pointer-events: none;  
+}  
 
-    .buy-options {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+.art-card:hover img {  
+  transform: scale(1.05);  
+}  
 
-    .buy-btn, .email-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: transform 0.3s, background 0.3s;
-    }
+.art-info {  
+  padding: 15px;  
+  text-align: center;  
+}  
 
-    .buy-btn {
-      background: #25d366;
-    }
+.art-title {  
+  font-size: 20px;  
+  font-weight: 600;  
+}  
 
-    .email-btn {
-      background: #0078d7;
-    }
+.art-price {  
+  color: #27ae60;  
+  font-size: 18px;  
+  margin: 8px 0;  
+}  
 
-    .buy-btn:hover, .email-btn:hover {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
+/* Purchase Options */  
+.buy-options {  
+  display: flex;  
+  justify-content: center;  
+  gap: 10px;  
+  flex-wrap: wrap;  
+}  
 
-    .about {
-      max-width: 900px;
-      margin: 60px auto;
-      text-align: center;
-      padding: 0 20px;
-      color: #444;
-    }
+.buy-btn {  
+  background: #25d366;  
+  color: white;  
+  text-decoration: none;  
+  padding: 10px 16px;  
+  border-radius: 8px;  
+  font-weight: 500;  
+  transition: background 0.3s;  
+}  
 
-    .about h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #000;
-    }
+.buy-btn:hover {  
+  background: #1ebe5d;  
+}  
 
-    .about p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
+.email-btn {  
+  background: #0078d7;  
+  color: white;  
+  text-decoration: none;  
+  padding: 10px 16px;  
+  border-radius: 8px;  
+  font-weight: 500;  
+  transition: background 0.3s;  
+}  
 
-    footer {
-      background-color: #000;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      font-size: 14px;
-      margin-top: 40px;
-    }
+.email-btn:hover {  
+  background: #0062b1;  
+}  
 
-    footer a {
-      color: #25d366;
-      text-decoration: none;
-    }
+/* Social Share Buttons */  
+.share {  
+  margin-top: 10px;  
+}  
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+.share a {  
+  margin: 0 5px;  
+  text-decoration: none;  
+  font-size: 18px;  
+}  
 
-    footer .socials {
-      margin-top: 10px;
-    }
+.about {  
+  max-width: 900px;  
+  margin: 60px auto;  
+  text-align: center;  
+  padding: 0 20px;  
+  color: #444;  
+}  
 
-    footer .socials a {
-      margin: 0 8px;
-      font-size: 18px;
-    }
-  </style>
+.about h2 {  
+  font-size: 24px;  
+  margin-bottom: 10px;  
+  color: #000;  
+}  
 
-  <script>
-    // Copyright protection script
-    document.addEventListener('contextmenu', event => {
-      event.preventDefault();
-      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
-    });
+body.dark .about h2 {  
+  color: #fff;  
+}  
 
-    document.addEventListener('keydown', function(event) {
-      if (event.ctrlKey && (event.key === 's' || event.key === 'S' || event.key === 'u' || event.key === 'U' || event.key === 'p' || event.key === 'P')) {
-        event.preventDefault();
-        alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
-      }
-    });
+.about p {  
+  font-size: 16px;  
+  line-height: 1.6;  
+}  
 
-    document.addEventListener('dragstart', event => {
-      event.preventDefault();
-      alert("⚠️ This artwork is protected by copyright © Shahiem Abraham.");
-    });
-  </script>
-</head>
+/* Contact Form */  
+.contact {  
+  background: #f2f2f2;  
+  padding: 50px 20px;  
+  text-align: center;  
+}  
 
-<body>
-  <header>
-    <h1>Shahiem Abraham Art Store</h1>
-    <p>Exclusive Art Collection for Sale</p>
-  </header>
+body.dark .contact {  
+  background: #1b1b1b;  
+}  
 
-  <section class="gallery">
-    <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6%20(1).jpg" alt="Rust Boy">
-      <div class="art-info">
-        <div class="art-title">RUST BOY</div>
-        <div class="art-price">$205.55</div>
-        <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20RUST%20BOY%20artwork.">🛒 WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20RUST%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20RUST%20BOY%20artwork.%0A">📧 Email</a>
-        </div>
-      </div>
-    </div>
+.contact h2 {  
+  margin-bottom: 15px;  
+}  
 
-    <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1)%20(1).jpg" alt="LV Rust Boy">
-      <div class="art-info">
-        <div class="art-title">LV Rust BOY</div>
-        <div class="art-price">$347.40</div>
-        <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20LV%20Rust%20BOY%20artwork.">🛒 WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20LV%20Rust%20BOY%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20LV%20Rust%20BOY%20artwork.%0A">📧 Email</a>
-        </div>
-      </div>
-    </div>
+form {  
+  max-width: 600px;  
+  margin: auto;  
+}  
 
-    <div class="art-card">
-      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e%20(2).jpg" alt="Louis Vuitton Boy">
-      <div class="art-info">
-        <div class="art-title">Louis Vuitton Boy</div>
-        <div class="art-price">$428.46</div>
-        <div class="buy-options">
-          <a class="buy-btn" href="https://wa.me/27639193571?text=Hi%20Shahiem!%20I'm%20interested%20in%20buying%20Louis%20Vuitton%20Boy%20artwork.">🛒 WhatsApp</a>
-          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com?subject=Interest%20in%20Louis%20Vuitton%20Boy%20Artwork&body=Hi%20Shahiem,%0AI%20am%20interested%20in%20purchasing%20your%20Louis%20Vuitton%20Boy%20artwork.%0A">📧 Email</a>
-        </div>
-      </div>
-    </div>
-  </section>
+input, textarea {  
+  width: 100%;  
+  padding: 10px;  
+  margin-bottom: 15px;  
+  border: 1px solid #ccc;  
+  border-radius: 6px;  
+  font-family: "Poppins", sans-serif;  
+}  
 
-  <section class="about">
-    <h2>About the Artist</h2>
-    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>
-    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a> or email me at <a href="mailto:abrahamshahiem1@gmail.com">abrahamshahiem1@gmail.com</a>.</p>
-  </section>
+body.dark input, body.dark textarea {  
+  background: #222;  
+  color: white;  
+  border: 1px solid #444;  
+}  
 
-  <footer>
-    <p>© 2025 Shahiem Abraham — All Rights Reserved</p>
-    <div class="socials">
-      <a href="https://wa.me/27639193571">WhatsApp</a> |
-      <a href="mailto:abrahamshahiem1@gmail.com">Email</a> |
-      <a href="#">Instagram (coming soon)</a>
-    </div>
-  </footer>
+button {  
+  background: #000;  
+  color: white;  
+  border: none;  
+  padding: 12px 25px;  
+  border-radius: 8px;  
+  cursor: pointer;  
+  font-weight: 500;  
+}  
 
-</body>
-</html>
+button:hover {  
+  background: #222;  
+}  
+
+footer {  
+  background-color: #000;  
+  color: white;  
+  text-align: center;  
+  padding: 25px;  
+  font-size: 14px;  
+  margin-top: 40px;  
+  position: relative;  
+}  
+
+footer img {  
+  width: 120px;  
+  margin-top: 10px;  
+  opacity: 0.7;  
+}  
+
+/* Floating Cart + Dark Mode */  
+.floating-icons {  
+  position: fixed;  
+  bottom: 25px;  
+  right: 25px;  
+  display: flex;  
+  flex-direction: column;  
+  gap: 10px;  
+  z-index: 999;  
+}  
+
+.icon-btn {  
+  background: #000;  
+  color: white;  
+  border: none;  
+  padding: 12px 14px;  
+  border-radius: 50%;  
+  font-size: 20px;  
+  cursor: pointer;  
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);  
+  transition: transform 0.2s;  
+}  
+
+.icon-btn:hover {  
+  transform: scale(1.1);  
+}  
+
+.dark body {  
+  background: #000;  
+  color: white;  
+}
+
+  </style>    <script>  
+    document.addEventListener('contextmenu', e => e.preventDefault());  
+  
+    function toggleDarkMode() {  
+      document.body.classList.toggle('dark');  
+    }  
+  
+    function openCart() {  
+      alert("🛒 To purchase, please contact via WhatsApp or Email under each artwork.");  
+    }  
+  </script>  </head>  
+<body>    <header>  
+    <h1>Shahiem Abraham Art Store</h1>  
+    <p>Exclusive Art Collection for Sale</p>  
+  </header>    <section class="hero">  
+    <h2>"Art that Speaks Emotion"</h2>  
+    <p>Each piece is a reflection of life, texture, and fashion — crafted by Shahiem Abraham.</p>  
+  </section>    <section class="gallery">  
+    <div class="art-card">  
+      <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/efea6b5f98351992732e56869e7336f6%20(1).jpg" alt="Rust Boy">  
+      <div class="art-info">  
+        <div class="art-title">RUST BOY</div>  
+        <div class="art-price">$205.55</div>  
+        <div class="buy-options">  
+          <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>  
+          <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>  
+        </div>  
+        </div>  
+      </div>  
+    </div>  <div class="art-card">  
+  <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/IMG_20251108_095820%20(1)%20(1).jpg" alt="LV Rust Boy">  
+  <div class="art-info">  
+    <div class="art-title">LV Rust BOY</div>  
+    <div class="art-price">$347.40</div>  
+    <div class="buy-options">  
+      <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>  
+      <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>  
+    </div>  
+    </div>  
+  </div>  
+</div>  
+
+<div class="art-card">  
+  <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/file_00000000edc072309edccfad56a5ea6e%20(2).jpg" alt="Louis Vuitton Boy">  
+  <div class="art-info">  
+    <div class="art-title">Louis Vuitton Boy</div>  
+    <div class="art-price">$428.46</div>  
+    <div class="buy-options">  
+      <a class="buy-btn" href="https://wa.me/27639193571">WhatsApp</a>  
+      <a class="email-btn" href="mailto:abrahamshahiem1@gmail.com">Email</a>  
+    </div>  
+    </div>  
+  </div>  
+</div>
+
+  </section>    <section class="about">  
+    <h2>About the Artist</h2>  
+    <p>I'm <strong>Shahiem Abraham</strong>, a visual artist inspired by urban life, texture, and fashion. Each artwork I create carries a blend of modern street influence and personal storytelling. I aim to capture emotion and design in every piece I make.</p>  
+    <p>For commissions or purchases, contact me directly on <a href="https://wa.me/27639193571">WhatsApp</a> or email me at <a href="mailto:abrahamshahiem1@gmail.com">abrahamshahiem1@gmail.com</a>.</p>  
+  </section>    <section class="contact">  
+    <h2>Contact Me</h2>  
+    <form action="mailto:abrahamshahiem1@gmail.com" method="post" enctype="text/plain">  
+      <input type="text" name="name" placeholder="Your Name" required>  
+      <input type="email" name="email" placeholder="Your Email" required>  
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>  
+      <button type="submit">Send Message</button>  
+    </form>  
+  </section>    <footer>  
+    <p>© 2025 Shahiem Abraham — All Rights Reserved</p>  
+    <img src="https://raw.githubusercontent.com/abrahamshahiem1-dev/shahiem-art-store/refs/heads/main/signature.png" alt="Signature">  
+  </footer>    <div class="floating-icons">  
+    <button class="icon-btn" onclick="openCart()">🛒</button>  
+    <button class="icon-btn" onclick="toggleDarkMode()">🌗</button>  
+  </div>  </body>  
+</html>  
